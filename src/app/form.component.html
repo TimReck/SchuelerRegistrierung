@@ -1,0 +1,77 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <!-- Persönliche Informationen -->
+  <mat-step [stepControl]="firstFormGroup">
+    	<form [formGroup]="firstFormGroup" class="form">
+        <ng-template matStepLabel>{{formGroupTitles[0]}}</ng-template>
+        <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input formControlName="firstCtrl" matInput placeholder="Vorname" required>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width">
+              <input formControlName="firstCtrl" matInput placeholder="Nachname" required>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+        <table class="full-width" cellspacing="0"><tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input formControlName="firstCtrl" matInput placeholder="Ort" required>
+            </mat-form-field></td>
+          <td>
+            <mat-form-field class="full-width">
+              <input formControlName="firstCtrl" matInput placeholder="Bundesland">
+            </mat-form-field></td>
+          <td>
+            <mat-form-field class="full-width">
+              <input formControlName="firstCtrl" matInput #postalCode maxlength="5" placeholder="PLZ" required>
+              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <div class="button-group">
+        <button mat-raised-button color="primary" matStepperNext>{{nextButtonLabel}}</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Ausbildungsberuf -->
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>{{formGroupTitles[1]}}</ng-template>
+      
+      <div class="button-group">
+        <button mat-raised-button color="primary" matStepperPrevious>{{backButtonLabel}}</button>
+        <button mat-raised-button color="primary" matStepperNext>{{nextButtonLabel}}</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Berufliche Vorbildung -->
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>{{formGroupTitles[2]}}</ng-template>
+      <p>Coming soon...</p>
+      <div class="button-group">
+        <button mat-raised-button color="primary" matStepperPrevious>{{backButtonLabel}}</button>
+        <button mat-raised-button color="primary" matStepperNext>{{nextButtonLabel}}</button>
+      </div>
+    </form>
+  </mat-step>
+  <!-- Fertig! -->
+  <mat-step>
+    <ng-template matStepLabel>{{formGroupTitles[3]}}</ng-template>
+    You are now done.
+    <div class="button-group">
+      <button mat-raised-button color="primary" matStepperPrevious>{{backButtonLabel}}</button>
+      <button mat-raised-button color="primary" (click)="stepper.reset()">Zurücksetzen</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

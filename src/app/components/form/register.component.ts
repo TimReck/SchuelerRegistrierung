@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: [ './form.component.css' ]
+  selector: 'register-form',
+  templateUrl: './register.component.html'
 })
-export class FormComponent  {
+export class RegisterComponent  {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;

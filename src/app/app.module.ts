@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule
- } from '@angular/platform-browser';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {CdkTableModule} from '@angular/cdk/table';
-import {CdkTreeModule} from '@angular/cdk/tree';
+import { RouterModule, Routes } from '@angular/router';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -46,16 +47,32 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { FormComponent } from './form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent, StudentListingComponent } from './components';
+
+const appRoutes: Routes = [
+  { path: 'register', component: RegisterComponent },
+  { path: 'listing', component: StudentListingComponent },
+  {
+    path: '',
+    redirectTo: '/register',
+    pathMatch: 'full'
+  },
+  { path: '**', component: RegisterComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    RegisterComponent,
+    StudentListingComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -108,7 +125,7 @@ import { FormComponent } from './form.component';
   ]
 
 })
-export class AppModule {}
+export class AppModule { }
 
 
 /**  Copyright 2018 Google Inc. All Rights Reserved.

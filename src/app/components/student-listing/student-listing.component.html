@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="students" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Vorname Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Vorname </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Nachname Column -->
+    <ng-container matColumnDef="surname">
+        <th mat-header-cell *matHeaderCellDef> Nachname </th>
+        <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
+
+    <!-- PLZ Column -->
+    <ng-container matColumnDef="zipcode">
+        <th mat-header-cell *matHeaderCellDef> PLZ </th>
+        <td mat-cell *matCellDef="let element"> {{element.zipcode}} </td>
+    </ng-container>
+
+    <!-- Stadt Column -->
+    <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> Stadt </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
+
+    <!-- Bundesland Column -->
+    <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef> Bundesland/Region </th>
+        <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
